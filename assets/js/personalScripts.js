@@ -4,9 +4,14 @@
 $(document).ready(function(){
 
     // ENUM
-    var dict ={
+    var numberToID ={
         1 : '#one',
         2 :'#two'
+    };
+
+    var IDToNumber = {
+'#one' : 1,
+        '#two' : 2
     };
 
 
@@ -21,11 +26,11 @@ $(document).ready(function(){
     };
 
     var getOpposite = function(picked){
-      return picked === dict[1] ? dict[2] : dict[1];
+      return picked === numberToID[1] ? numberToID[2] : numberToID[1];
     };
     // Randomizes one or two
     var randomizeOneOrTwo = function(){
-        return dict[Math.round(Math.random() +1)];
+        return numberToID[Math.round(Math.random() +1)];
     }
 
 
