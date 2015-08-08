@@ -19,22 +19,22 @@ $(document).ready(function(){
     };
 
     var answer = {
-        'A' : 2,
+        'A' : '2',
         'B' : 'life'
     };
 
 
     var init = function(){
-        toggleNext();
+        displayNext(false);
     };
 
-    var toggleNext = function(){
+    var displayNext = function(state){
         var elem = $('#next');
-        var state = elem.css('display');
-        if ( state !== 'none'){
-            elem.css('display','none');
-        }else{
+        if (state){
+            // display
             elem.css('display','block');
+        }else{
+            elem.css('display','none');
         }
     };
     // Picks which div to keep
@@ -60,16 +60,31 @@ $(document).ready(function(){
         return numberToID[Math.round(Math.random() +1)];
     }
 
+    var verifyAnswer= function(userAnswer){
+        return userAnswer === answer[window.state];
+    };
+
+
+    // Invoke all
+    generateAB();
+    init();
+    // NOTICE ! Listeners must come AFTER init! else they bind wrongly
+
     // Listeners
     $('#submit').click(function(){
         var userInput = $('#answer').val();
         // TODO: Ajax call to server with answer
-        //if (userInput === )
-            });
-
-
-        // Invoke all
-        generateAB();
-        init();
-
+        if (verifyAnswer(userInput)){
+            displayNext(true);
+        }else{
+            displayNext(false);
+            alert('nope');
+        }
     });
+
+    $('#next').click(function(){
+        alert('now something should happen!');
+    });
+
+
+});
