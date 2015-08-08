@@ -12,6 +12,8 @@ $(document).ready(function(){
             $.get( URI, function( data ) {
                 console.log(data);
             });
+        }else{
+            $('#userMail').css('border','1px solid maroon');
         }
 
     });
