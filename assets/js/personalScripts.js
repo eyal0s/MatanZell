@@ -13,12 +13,39 @@ $(document).ready(function(){
         '#one' : 1,
         '#two' : 2
     };
+    var IDToState = {
+        '#one' : 'A',
+        '#two' : 'B'
+    };
+
+    var answer = {
+        'A' : 2,
+        'B' : 'life'
+    };
 
 
+    var init = function(){
+        toggleNext();
+    };
+
+    var toggleNext = function(){
+        var elem = $('#next');
+        var state = elem.css('display');
+        if ( state !== 'none'){
+            elem.css('display','none');
+        }else{
+            elem.css('display','block');
+        }
+    };
     // Picks which div to keep
     var generateAB = function(){
         var choosen = randomizeOneOrTwo();
-        //alert(choosen);
+
+        // Save state as global
+
+        window.state = IDToState[getOpposite(choosen)];
+
+        // removes the chosen element!
         $(choosen).remove();
 
         $('#mainScroll').attr('href',getOpposite(choosen));
@@ -37,11 +64,12 @@ $(document).ready(function(){
     $('#submit').click(function(){
         var userInput = $('#answer').val();
         // TODO: Ajax call to server with answer
-        $('#form').html('<p>Thank you for your answer! <br/>' +
-            ' A mail will be sent soon!</p>');
+        //if (userInput === )
+            });
+
+
+        // Invoke all
+        generateAB();
+        init();
+
     });
-
-
-    // Invoke all
-    generateAB();
-});
