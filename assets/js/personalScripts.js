@@ -72,32 +72,47 @@ $(document).ready(function(){
         return userAnswer === answer[window.stateSymbol];
     };
 
+    var switchStates = function(){
+        var temp = window.currentState;
+        window.currentState = window.removedState;
+        window.removedState = temp;
+        window.stateSymbol = window.stateSymbol === 'A' ? 'B' : 'A';
+    };
+
+
+
+
+    var bindListeners = function(){
+        // Listeners
+        $('#submit').on('click', function(){
+            var userInput = $('#answer').val();
+            // TODO: Ajax call to server with answer
+            if (verifyAnswer(userInput)){
+                displayNext(true);
+            }else{
+                displayNext(false);
+                alert('nope');
+            }
+        });
+
+        $('#next').click(function(){
+            switchStates();
+
+        });
+
+        $('#sendMail').click(function(){
+            var userMail = $('#mail').val();
+            alert('Should send mail to ' + userMail);
+        });
+    };
+
+
 
     // Invoke all
     generateAB();
     init();
-    // NOTICE ! Listeners must come AFTER init! else they bind wrongly
+    bindListeners();
 
-    // Listeners
-    $('#submit').click(function(){
-        var userInput = $('#answer').val();
-        // TODO: Ajax call to server with answer
-        if (verifyAnswer(userInput)){
-            displayNext(true);
-        }else{
-            displayNext(false);
-            alert('nope');
-        }
-    });
-
-    $('#next').click(function(){
-        alert('now something should happen');
-    });
-
-    $('#sendMail').click(function(){
-        var userMail = $('#mail').val();
-        alert('Should send mail to ' + userMail);
-    });
 
 
 });
