@@ -40,28 +40,36 @@ $(document).ready(function(){
     // Picks which div to keep
     var generateAB = function(){
         var choosen = randomizeOneOrTwo();
+        var choosenOppose = IDToNumber[choosen];
+        console.log(choosen,choosenOppose);
 
-        // Save state as global
+        // Save stateSymbol as global
 
-        window.state = IDToState[getOpposite(choosen)];
+        window.stateSymbol = IDToState[getOpposite(choosen)];
 
         // removes the chosen element!
+        window.removedState = $(choosen);
+
         $(choosen).remove();
+
+        window.currentState = $()
 
         $('#mainScroll').attr('href',getOpposite(choosen));
         return;
     };
 
+    // Gets a number, returns ID from dictionary
     var getOpposite = function(picked){
         return picked === numberToID[1] ? numberToID[2] : numberToID[1];
     };
-    // Randomizes one or two
+
+    // Randomizes one or two, returns ID
     var randomizeOneOrTwo = function(){
         return numberToID[Math.round(Math.random() +1)];
     }
 
     var verifyAnswer= function(userAnswer){
-        return userAnswer === answer[window.state];
+        return userAnswer === answer[window.stateSymbol];
     };
 
 
