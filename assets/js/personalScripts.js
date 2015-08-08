@@ -86,8 +86,10 @@ $(document).ready(function(){
         // Listeners
         $('#submit').on('click', function(){
             var userInput = $('#answer').val();
+            window.location = 'success_' + window.stateSymbol + '.html';
 
-            // Following part is irrelevant due to matan being asshole
+
+            // Following part is irrelevant due to Matan being an asshole
             /**
              if (verifyAnswer(userInput)){
                 displayNext(true);
