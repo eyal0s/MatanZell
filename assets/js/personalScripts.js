@@ -23,6 +23,7 @@ $(document).ready(function(){
         'B' : 'life'
     };
 
+    var headerElem = $('#header');
 
     var init = function(){
         displayNext(false);
@@ -49,7 +50,6 @@ $(document).ready(function(){
         // removes the chosen element!
         window.removedState = $(choosen);
         window.currentState = $(choosenOppose);
-
         $(choosen).remove();
 
 
@@ -91,7 +91,12 @@ $(document).ready(function(){
     });
 
     $('#next').click(function(){
-        alert('now something should happen!');
+        alert('now something should happen');
+    });
+
+    $('#sendMail').click(function(){
+        var userMail = $('#mail').val();
+        alert('Should send mail to ' + userMail);
     });
 
 
