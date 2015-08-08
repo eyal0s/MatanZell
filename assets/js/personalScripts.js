@@ -87,12 +87,15 @@ $(document).ready(function(){
         $('#submit').on('click', function(){
             var userInput = $('#answer').val();
 
-            if (verifyAnswer(userInput)){
+            // Following part is irrelevant due to matan being asshole
+            /**
+             if (verifyAnswer(userInput)){
                 displayNext(true);
             }else{
                 displayNext(false);
                 alert('nope');
             }
+             **/
         });
 
         $('#next').click(function(){
