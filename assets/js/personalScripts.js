@@ -40,8 +40,7 @@ $(document).ready(function(){
     // Picks which div to keep
     var generateAB = function(){
         var choosen = randomizeOneOrTwo();
-        var choosenOppose = IDToNumber[choosen];
-        console.log(choosen,choosenOppose);
+        var choosenOppose = getOpposite(choosen);
 
         // Save stateSymbol as global
 
@@ -49,10 +48,11 @@ $(document).ready(function(){
 
         // removes the chosen element!
         window.removedState = $(choosen);
+        window.currentState = $(choosenOppose);
 
         $(choosen).remove();
 
-        window.currentState = $()
+
 
         $('#mainScroll').attr('href',getOpposite(choosen));
         return;
