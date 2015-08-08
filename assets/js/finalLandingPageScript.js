@@ -6,6 +6,10 @@ $(document).ready(function(){
 
         var userMail = $('#userMail').val().replace(/\s/g, '');
         if (userMail.length > 0 ){
+            $('#MailError').css('display','none');
+            $('#MailSuccess').css('display','block');
+            $('#userMail').css('border','1px solid #9dc66b');
+
             var serverFileLocation = 'server/process.php';
             var queryString = '?mail='  + userMail;
             var URI = serverFileLocation + queryString;
@@ -14,6 +18,8 @@ $(document).ready(function(){
             });
         }else{
             $('#userMail').css('border','1px solid maroon');
+            $('#MailSuccess').css('display','none');
+            $('#MailError').css('display','block');
         }
 
     });

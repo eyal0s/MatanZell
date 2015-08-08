@@ -8,9 +8,13 @@
     float:right;
 }
 #mail{
-   border: solid 1px rgba(255, 255, 255, 0.5);
+    border: solid 1px rgba(255, 255, 255, 0.5);
 }
 .error{
     color:maroon;
-
+    display:none;
+}
+.success{
+    display:none;
+    color:#9dc66b;
 }
