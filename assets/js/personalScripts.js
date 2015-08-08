@@ -86,7 +86,7 @@ $(document).ready(function(){
         // Listeners
         $('#submit').on('click', function(){
             var userInput = $('#answer').val();
-            // TODO: Ajax call to server with answer
+
             if (verifyAnswer(userInput)){
                 displayNext(true);
             }else{
